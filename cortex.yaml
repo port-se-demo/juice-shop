@@ -7,7 +7,7 @@ info:
   
   x-cortex-git:
     gitlab:
-      repository: platform-engineering/user-management-service
+      repository: juice-shop
   
   x-cortex-owners:
     - name: platform-engineering
