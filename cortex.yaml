@@ -1,0 +1,71 @@
+openapi: 3.0.1
+info:
+  title: User Management Service API
+  description: User Management Service API v2 - Handles user authentication, authorization, and profile management
+  x-cortex-type: service
+  x-cortex-tag: user-management-service_api-driver
+  
+  x-cortex-git:
+    gitlab:
+      repository: platform-engineering/user-management-service
+  
+  x-cortex-owners:
+    - name: platform-engineering
+      type: group
+      provider: CORTEX
+    - type: slack
+      channel: team-platform-eng
+    - type: email
+      email: platform-engineering@company.com
+  
+  x-cortex-oncall:
+    pagerduty:
+      id: PD12345
+      type: SERVICE
+  
+  x-cortex-apm:
+    newrelic:
+      alias: UserMgmt
+      applicationId: 987654321
+  
+  x-cortex-slos:
+    prometheus:
+      - slo: 0.999
+        name: availability
+        alias: prometheus-availability
+        errorQuery: "slo:sli_error:amount1w{category=\"availability\",env=\"prod\",service=\"user-management\"}"
+        totalQuery: "slo:sli_total:amount1w{category=\"availability\",env=\"prod\",service=\"user-management\"}"
+  
+  x-cortex-link:
+    - url: ./README.md
+      name: Service Documentation
+      type: DOCUMENTATION
+    - url: https://user-management.company.com/health
+      name: Health Check
+      type: HEALTHCHECK
+  
+  x-cortex-issues:
+    jira:
+      projects:
+        - PLAT
+  
+  x-cortex-dashboards:
+    embeds:
+      - url: https://company.grafana.net/d/user-mgmt-overview/user-management-service-overview
+        type: grafana
+        name: Service Overview
+  
+  x-cortex-static-analysis:
+    sonarqube:
+      project: user-management-service_api-driver
+    MEND:
+      projectIds: 
+      - 234524
+  
+  x-cortex-dependencies:
+    - tag: postgres_database
+      type: database
+      method: REST
+    - tag: auth_service
+      type: service
+      method: HTTP
