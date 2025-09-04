@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: User Management Service API
+  title: UserManagementServiceAPI
   description: User Management Service API v2 - Handles user authentication, authorization, and profile management
   x-cortex-type: service
   x-cortex-tag: user-management-service_api-driver
